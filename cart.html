@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+          </li>
+          <li class="nav-item">
+            <!-- CREACIÓN DEL BOTÓN MENU DESPLEGABLE -->
+            <div class="menuDesplegable">
+              <button class="nav-link perfil" id="perfil">
+                <i class="bx bx-chevron-down" id="arrow"></i>
+              </button>
+                <div id="divDropdown" class="divDropdown">
+              <ul>
+              <li><a href="cart.html">Mi carrito</a></li>
+              <li><a href="my-profile.html">Mi perfil</a></li>
+              <li><a href="login.html">Cerrar Sesión</a></li>
+            </ul>
+          </div>
+          </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main>
+
+    <!-- Pauta 1 y 2 (Entrega 5)-->
+    <div class="container">
+      <h1 class="d-inline">Carrito de Compras</h1>
+      <h4>Articulos a comprar</h4>
+      <div class="col-1  float-left">
+        <ul id="product-list"></ul>
+      </div>
+
+      <div class="row">
+        <h4 class="pb-3">Tipo de Envío:</h4>
+
+        <label>
+          <input type="radio" name="shipping" value="0.15" required> Premium 2 a 5 días (15%)
+        </label>
+        <label>
+          <input type="radio" name="shipping" value="0.07" required> Express 5 a 8 días (7%)
+        </label>
+        <label>
+          <input type="radio" name="shipping" value="0.05" required> Standard 12 a 15 días (5%)
+        </label>
+
+      </div>
+      <div>
+        <div>
+          <h4 class="pt-3">Dirección de envìo</h4>
+          <label class="pt-2 pr-3 pb-4 pl-1" for="street">Calle:</label>
+          <input class="col-2" type="text" id="street" name="street" required>
+          <label for="number">Número:</label>
+          <input class="col-2" type="text" id="number" name="number" required>
+          <label for="corner">Esquina:</label>
+          <input class="col-2" type="text" id="corner" name="corner" required>
+        </div>
+
+    <div class="row">
+      <div class="col-6">
+        <h4>Resumen de Compra</h4>
+        <p>Subtotal General: <span id="subtotal-general">$0.00 USD</span></p>
+        <p>Costo de Envío: <span id="costo-envio">$0.00 USD</span></p>
+        <p>Total a Pagar: <span id="total-pagar">$0.00 USD</span></p>
+      </div>
+    </div>
+
+ 
+
+
+
+<h2>Forma de Pago</h2>
+<!--ENTREGA 6 - PAUTA2 -->
+<!-- Botón para abrir el modal -->
+<button type="button" class="btn btn-link ps-0" data-bs-toggle="modal" data-bs-target="#paymentModal">Seleccionar</button><br><br>
+
+<!-- PAUTA 3-ENTREGA 6-->
+<!-- Agrega un botón para confirmar la compra -->
+<button id="confirmPurchaseButton" class="btn btn-outline-success">Finalizar Compra</button>
+
+
+<!-- Modal para la forma de pago -->
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="paymentModalLabel">FORMA DE PAGO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" value="creditCard" checked>
+          <label class="form-check-label" for="creditCard">Tarjeta de Crédito</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer" value="bankTransfer">
+          <label class="form-check-label" for="bankTransfer">Transferencia Bancaria</label>
+        </div>
+
+        <div id="creditCardForm" style="display: block;">
+
+          <!-- TARJETA DE CREDITO-->
+          
+            <div class="mb-3">
+              <label for="name" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="name" name="nombre" placeholder="Nombre Completo" maxlength="35" required>
+            </div>
+           <div class="mb-3">
+            <label for="cardNumber" class="form-label">Número de Tarjeta</label>
+            <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Número de Tarjeta"  required>
+           </div>
+          
+          <div class="mb-3">
+            <label for="expirationDate" class="form-label">Fecha de Vencimiento (MM/AA)</label>
+            <input type="text" class="form-control" id="expirationDate" name="expirationDate" placeholder="MM/AA" required>
+          </div>
+          <div class="mb-3">
+            <label for="securityCode" class="form-label">Código de Seguridad</label>
+            <input type="text" class="form-control" id="securityCode" name="securityCode" placeholder="Código de Seguridad" maxlength="3" required >
+          </div>          
+        </div>
+        <div id="bankTransferForm" style="display: none;">
+           <!-- TRANSFERENCIA BANCARIA -->
+           <div class="mb-3">
+            <label for="accountNumber" class="form-label">Número de Cuenta</label>
+            <input type="text" class="form-control" id="accountNumber" placeholder="Ingrese su número de Cuenta" required>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="confirmPayment">Confirmar</button>
+        <div id="confirmationMessage" style="display: none;"></div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
+    </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  
+  
+</body>
+
+</html>
